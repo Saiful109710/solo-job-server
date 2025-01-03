@@ -47,6 +47,14 @@ async function run() {
         res.send(result)
     })
 
+    // get single job
+    app.get('/job/:id',async(req,res)=>{
+          const id = req.params.id
+          const query = {_id:new ObjectId(id)}
+          const result = await jobsCollection.findOne(query);
+          res.send(result)
+    })
+
     // delete single job
     app.delete('/job/:id',async(req,res)=>{
       const id = req.params.id;
